@@ -1,0 +1,14 @@
+{
+  "title": "Model",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "required": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["id"]
+}

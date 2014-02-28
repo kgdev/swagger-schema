@@ -1,0 +1,15 @@
+{
+  "name": "swagger-schema",
+  "version": "0.1.0",
+  "description": "Swagger schema helpers",
+  "dependencies": {
+    "jjv": "https://github.com/acornejo/jjv/archive/v0.3.4.tar.gz",
+    "lodash": "*"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "main": "index",
+  "repository": "https://github.com/silas/swagger-schema.git",
+  "author": "Silas Sewell <silas@sewell.org>",
+  "license": "MIT"
+}
