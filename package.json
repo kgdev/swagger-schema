@@ -1,9 +1,9 @@
 {
   "name": "swagger-schema",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Swagger schema helpers",
   "dependencies": {
-    "jjv": "https://github.com/acornejo/jjv/archive/v0.3.4.tar.gz",
+    "jjv": "0.3.4",
     "lodash": "*"
   },
   "devDependencies": {},
