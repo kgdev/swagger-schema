@@ -153,6 +153,11 @@ function createParamTypeSchema(paramType, spec) {
   });
 
   if (!schema) return;
+
+  if (paramType === 'body') {
+    schema.properties.body = schema.properties.body.properties.body;
+  }
+
   if (!root.required.length) delete root.required;
 
   return schema;
