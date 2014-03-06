@@ -59,9 +59,9 @@ Environment.prototype.setupValidation = function() {
 Environment.prototype.validate = function(schema, data, options) {
   options = options || {};
   if (options.coerce) {
-    return this.coerceSchema.validate(schema, data);
+    return this.coerceSchema.validate(schema, data, options);
   }
-  return this.schema.validate(schema, data);
+  return this.schema.validate(schema, data, options);
 };
 
 Environment.prototype.validateThrow = function(schema, data, message) {
