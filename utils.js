@@ -155,7 +155,8 @@ function createParamTypeSchema(paramType, spec) {
   if (!schema) return;
 
   if (paramType === 'body') {
-    schema.properties.body = schema.properties.body.properties.body;
+    var name = Object.keys(schema.properties.body.properties)[0];
+    schema.properties.body = schema.properties.body.properties[name];
   }
 
   if (!root.required.length) delete root.required;
