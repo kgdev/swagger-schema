@@ -1,0 +1,14 @@
+{
+  "id": "GrantTypesObject",
+  "title": "Grant Types Object",
+  "type": "object",
+  "properties": {
+    "implicit": {
+      "$ref": "ImplicitObject"
+    },
+    "authorization_code": {
+      "$ref": "AuthorizationCodeObject"
+    }
+  },
+  "additionalProperties": false
+}

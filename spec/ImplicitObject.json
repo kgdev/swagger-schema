@@ -1,0 +1,8 @@
+{
+  "id": "ImplicitObject",
+  "title": "Implicit",
+  "type": "object",
+  "properties": {
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+{
+  "id": "ResourceObject",
+  "title": "Resource Object",
+  "type": "object",
+  "properties": {
+  },
+  "additionalProperties": false
+}

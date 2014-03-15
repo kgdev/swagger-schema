@@ -1,0 +1,28 @@
+{
+  "id": "ResourceListing",
+  "title": "Resource Listing",
+  "type": "object",
+  "properties": {
+    "swaggerVersion": {
+      "type": "string",
+      "enum": ["1.0", "1.1", "1.2"]
+    },
+    "apis": {
+      "type": "array",
+      "items": {
+        "$ref": "ResourceObject"
+      }
+    },
+    "apiVersion": {
+      "type": "string"
+    },
+    "info": {
+      "$ref": "InfoObject"
+    },
+    "authorizations": {
+      "$ref": "AuthorizationsObject"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["swaggerVersion", "apis"]
+}

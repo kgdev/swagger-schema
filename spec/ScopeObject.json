@@ -1,0 +1,15 @@
+{
+  "id": "ScopeObject",
+  "title": "OAuth2 Scope",
+  "type": "object",
+  "properties": {
+    "scope": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "required": ["scope"],
+  "additionalProperties": false
+}

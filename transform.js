@@ -130,7 +130,9 @@ function parameters(spec, paramType) {
     default:
       if (paramType === 'body') {
         property.$ref = parameter.type;
-        delete property.type;
+        lodash.keys(property).forEach(function(key) {
+          if (key !== '$ref') delete property[key];
+        });
       } else {
         throw new Error('unknown type: ' + parameter.type);
       }

@@ -1,0 +1,16 @@
+{
+  "id": "AuthorizationsObject",
+  "title": "Authorizations Object",
+  "type": "object",
+  "patternProperties": {
+    ".*": {
+      "type": "object",
+      "oneOf": [
+        { "$ref": "AuthorizationBasicAuth" },
+        { "$ref": "AuthorizationApiKey" },
+        { "$ref": "AuthorizationOauth2" }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

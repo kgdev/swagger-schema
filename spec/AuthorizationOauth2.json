@@ -1,0 +1,19 @@
+{
+  "id": "AuthorizationOauth2",
+  "title": "Authorization OAuth2",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["oauth2"]
+    },
+    "scopes": {
+      "$ref": "ScopeObject"
+    },
+    "grantTypes": {
+      "$ref": "GrantTypesObject"
+    }
+  },
+  "required": ["type", "grantTypes"],
+  "additionalProperties": false
+}

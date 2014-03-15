@@ -1,0 +1,9 @@
+{
+  "id": "AuthorizationCodeObject",
+  "title": "Authorization Code",
+  "type": "object",
+  "properties": {
+  },
+  "required": [],
+  "additionalProperties": false
+}

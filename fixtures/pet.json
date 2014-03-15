@@ -194,7 +194,7 @@
                         {
                             "description": "file to upload",
                             "name": "file",
-                            "paramType": "body",
+                            "paramType": "form",
                             "required": false,
                             "type": "File"
                         }
