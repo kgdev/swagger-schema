@@ -3,6 +3,13 @@
   "title": "Implicit",
   "type": "object",
   "properties": {
+    "loginEndpoint": {
+      "$ref": "LoginEndpointObject"
+    },
+    "tokenName": {
+      "type": "string"
+    }
   },
+  "required": ["loginEndpoint"],
   "additionalProperties": false
 }

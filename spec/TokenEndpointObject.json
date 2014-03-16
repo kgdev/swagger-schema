@@ -1,16 +1,16 @@
 {
-  "id": "ResourceObject",
-  "title": "Resource Object",
+  "id": "TokenEndpointObject",
+  "title": "Token Endpoint",
   "type": "object",
   "properties": {
-    "path": {
+    "url": {
       "type": "string",
       "minLength": 1
     },
-    "description": {
+    "tokenName": {
       "type": "string"
     }
   },
-  "required": ["path"],
+  "required": ["url"],
   "additionalProperties": false
 }

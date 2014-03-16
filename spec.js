@@ -18,6 +18,9 @@ var env = new Environment();
 
 var order = [
   'ScopeObject',
+  'TokenRequestEndpointObject',
+  'TokenEndpointObject',
+  'LoginEndpointObject',
   'ImplicitObject',
   'AuthorizationCodeObject',
   'GrantTypesObject',

@@ -8,7 +8,10 @@
       "enum": ["oauth2"]
     },
     "scopes": {
-      "$ref": "ScopeObject"
+      "type": "array",
+      "items": {
+        "$ref": "ScopeObject"
+      }
     },
     "grantTypes": {
       "$ref": "GrantTypesObject"

@@ -8,10 +8,12 @@
   },
   "devDependencies": {
     "jscs": "1.2.4",
-    "jshint": "2.4.4"
+    "jshint": "2.4.4",
+    "mocha": "1.17.1",
+    "should": "3.1.2"
   },
   "scripts": {
-    "test": "./node_modules/.bin/jshint . && ./node_modules/.bin/jscs ."
+    "test": "./node_modules/.bin/jshint . && ./node_modules/.bin/jscs . && ./node_modules/.bin/mocha --recursive --require should"
   },
   "main": "index",
   "repository": "https://github.com/silas/swagger-schema.git",

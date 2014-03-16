@@ -3,7 +3,13 @@
   "title": "Authorization Code",
   "type": "object",
   "properties": {
+    "tokenRequestEndpoint": {
+      "$ref": "TokenRequestEndpointObject"
+    },
+    "tokenEndpoint": {
+      "$ref": "TokenEndpointObject"
+    }
   },
-  "required": [],
+  "required": ["tokenRequestEndpoint", "tokenEndpoint"],
   "additionalProperties": false
 }
