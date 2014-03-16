@@ -49,7 +49,7 @@ var order = [
 ];
 
 order.forEach(function(name) {
-  env.addSchema(name, require('./spec/' + name + '.json'));
+  env.addSchema(name, require(__dirname + '/spec/' + name + '.json'));
 });
 
 /**
