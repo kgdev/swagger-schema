@@ -1,0 +1,11 @@
+{
+  "id": "ModelsObject",
+  "title": "Models",
+  "type": "object",
+  "patternProperties": {
+    ".*": {
+      "$ref": "ModelObject"
+    }
+  },
+  "additionalProperties": false
+}

@@ -17,6 +17,10 @@ var Environment = require('./environment');
 var env = new Environment();
 
 var order = [
+  'ApiVersion',
+  'SwaggerVersion',
+  'Mimes',
+
   'ScopeObject',
   'TokenRequestEndpointObject',
   'TokenEndpointObject',
@@ -33,6 +37,15 @@ var order = [
   'InfoObject',
   'ResourceObject',
   'ResourceListing',
+
+  'AuthorizationList',
+  'ParameterObject',
+  'ResponseMessageObject',
+  'ModelObject',
+  'ModelsObject',
+  'OperationObject',
+  'ApiObject',
+  'ApiDeclaration',
 ];
 
 order.forEach(function(name) {

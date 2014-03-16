@@ -1,0 +1,6 @@
+{
+  "id": "SwaggerVersion",
+  "title": "Swagger Version",
+  "type": "string",
+  "enum": ["1.0", "1.1", "1.2"]
+}

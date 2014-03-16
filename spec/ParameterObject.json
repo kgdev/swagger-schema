@@ -1,0 +1,55 @@
+{
+  "id": "ParameterObject",
+  "title": "Parameter",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "defaultValue": {
+    },
+    "enum": {
+      "type": "array"
+    },
+    "minimum": {
+      "type": "string"
+    },
+    "maximum": {
+      "type": "string"
+    },
+    "items": {
+      "type": "object"
+    },
+    "uniqueItems": {
+      "type": "boolean"
+    },
+    "paramType": {
+      "type": "string",
+      "enum": [
+        "path",
+        "query",
+        "body",
+        "header",
+        "form"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "allowMultiple": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["paramType", "name"]
+}

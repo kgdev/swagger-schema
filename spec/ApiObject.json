@@ -1,0 +1,22 @@
+{
+  "id": "ApiObject",
+  "title": "API",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "$ref": "OperationObject"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "requires": ["path", "operations"]
+}

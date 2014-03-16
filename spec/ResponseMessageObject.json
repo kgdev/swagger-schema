@@ -1,0 +1,18 @@
+{
+  "id": "ResponseMessageObject",
+  "title": "Response Message",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer"
+    },
+    "message": {
+      "type": "string"
+    },
+    "responseModel": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["code", "message"]
+}

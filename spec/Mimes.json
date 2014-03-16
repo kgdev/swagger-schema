@@ -1,0 +1,8 @@
+{
+  "id": "Consumes",
+  "title": "Consumes",
+  "type": "array",
+  "items": {
+    "type": "string"
+  }
+}

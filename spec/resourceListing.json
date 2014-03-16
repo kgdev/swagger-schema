@@ -4,8 +4,7 @@
   "type": "object",
   "properties": {
     "swaggerVersion": {
-      "type": "string",
-      "enum": ["1.0", "1.1", "1.2"]
+      "$ref": "SwaggerVersion"
     },
     "apis": {
       "type": "array",
@@ -14,7 +13,7 @@
       }
     },
     "apiVersion": {
-      "type": "string"
+      "$ref": "ApiVersion"
     },
     "info": {
       "$ref": "InfoObject"

@@ -1,0 +1,14 @@
+{
+  "id": "AuthorizationList",
+  "title": "Authorization List",
+  "type": "object",
+  "patternProperties": {
+    ".*": {
+      "type": "array",
+      "items": {
+        "$ref": "ScopeObject"
+      }
+    }
+  },
+  "additionalProperties": false
+}
