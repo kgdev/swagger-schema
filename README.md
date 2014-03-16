@@ -1,4 +1,4 @@
-# Swagger Schema [![Build Status](https://travis-ci.org/silas/swagger-schema.png?branch=master)](https://travis-ci.org/silas/swagger-schema)
+# Swagger Schema
 
 This is a helper library for [Swagger Framework][framework] and [Swagger Agent][agent].
 
