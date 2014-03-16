@@ -10,8 +10,6 @@
 
 var jjv = require('jjv');
 
-var v4 = require('./data/draft-04-schema');
-
 /**
  * Initialize a new `Environment`.
  *
@@ -30,10 +28,6 @@ function Environment(options) {
 }
 
 Environment.prototype.setupValidation = function() {
-  this.schemas.forEach(function(env) {
-    env.addSchema('http://json-schema.org/draft-04/schema', v4);
-  });
-
   this.coerceSchema.addTypeCoercion('integer', function(v) {
     if (typeof v === 'string' && v.match(/^\-?\d+$/)) {
       return parseInt(v, 10);
