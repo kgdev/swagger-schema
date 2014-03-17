@@ -18,9 +18,16 @@ var notModel = [
   'void',
 ].concat(primitives);
 
+var allowMultiple = [
+  'query',
+  'header',
+  'path',
+];
+
 /**
  * Expose utils.
  */
 
-exports.primitives = primitives;
+exports.allowMultiple = allowMultiple;
 exports.notModel = notModel;
+exports.primitives = primitives;

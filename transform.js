@@ -146,6 +146,15 @@ function parameters(spec, paramType) {
     if (parameter.required || paramType === 'path') {
       schema.required.push(parameter.name);
     }
+
+    // convert to items if allowMultiple
+    if (parameter.allowMultiple &&
+        constants.allowMultiple.indexOf(parameter.paramType) >= 0) {
+      schema.properties[parameter.name] = {
+        type: 'array',
+        items: property,
+      };
+    }
   });
 
   if (!schema.required.length) delete schema.required;

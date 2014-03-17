@@ -52,6 +52,13 @@
                             "paramType": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        {
+                            "description": "Ignore this request",
+                            "name": "x-ignore",
+                            "paramType": "header",
+                            "required": false,
+                            "type": "boolean"
                         }
                     ],
                     "responseMessages": [
@@ -148,6 +155,14 @@
                             "paramType": "form",
                             "required": false,
                             "type": "string"
+                        },
+                        {
+                            "description": "Don't update listed fields",
+                            "name": "x-ignore",
+                            "paramType": "header",
+                            "required": false,
+                            "type": "string",
+                            "allowMultiple": true
                         }
                     ],
                     "responseMessages": [
@@ -322,14 +337,15 @@
                     },
                     "method": "GET",
                     "nickname": "findPetsByTags",
-                    "notes": "Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 for testing.",
+                    "notes": "Muliple tags can be provided with multple query parameters.",
                     "parameters": [
                         {
                             "description": "Tags to filter by",
-                            "name": "tags",
+                            "name": "tag",
                             "paramType": "query",
                             "required": true,
-                            "type": "string"
+                            "type": "string",
+                            "allowMultiple": true
                         }
                     ],
                     "responseMessages": [
