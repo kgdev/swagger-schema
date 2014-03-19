@@ -142,8 +142,14 @@ function parameters(spec, paramType) {
       property.enum = parameter.enum;
     }
 
+    var hasDefault = parameter.hasOwnProperty('defaultValue');
+
+    if (hasDefault) {
+      property.default = parameter.defaultValue;
+    }
+
     // path rules are implicitly required
-    if (parameter.required || paramType === 'path') {
+    if (!hasDefault && (parameter.required || paramType === 'path')) {
       schema.required.push(parameter.name);
     }
 
