@@ -1,6 +1,6 @@
 {
   "name": "swagger-schema",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Swagger schema helpers",
   "dependencies": {
     "jjv": "0.3.4",

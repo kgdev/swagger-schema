@@ -49,6 +49,8 @@ function models(spec) {
     if (type) ids[type] = true;
   };
 
+  add(spec);
+
   if (spec.properties) {
     lodash.forOwn(spec.properties, function(p) { add(p); });
   } else if (spec.parameters) {
