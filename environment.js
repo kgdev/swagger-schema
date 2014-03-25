@@ -23,13 +23,29 @@ function Environment(options) {
     return new Environment(options);
   }
 
+  // defaults
   options = lodash.defaults(options || {}, {
     setup: true,
+    schema: {},
+  });
+
+  // jjv defaults
+  options.schema = lodash.defaults(options.schema, {
+    checkRequired: true,
+    useDefault: true,
+    useCoerce: true,
   });
 
   this.schema = jjv();
   this.coerceSchema = jjv();
   this.schemas = [this.schema, this.coerceSchema];
+
+  // set jjv defaults
+  this.schemas.forEach(function(env) {
+    lodash.forOwn(options.schema, function(value, key) {
+      env.defaultOptions[key] = value;
+    });
+  });
 
   if (options.setup) this.setup();
 }
