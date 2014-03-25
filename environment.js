@@ -26,53 +26,39 @@ function Environment(options) {
   // defaults
   options = lodash.defaults(options || {}, {
     setup: true,
-    schema: {},
   });
 
-  // jjv defaults
-  options.schema = lodash.defaults(options.schema, {
-    checkRequired: true,
-    useDefault: true,
-    useCoerce: true,
-  });
-
-  this.schema = jjv();
-  this.coerceSchema = jjv();
-  this.schemas = [this.schema, this.coerceSchema];
-
-  // set jjv defaults
-  this.schemas.forEach(function(env) {
-    lodash.forOwn(options.schema, function(value, key) {
-      env.defaultOptions[key] = value;
-    });
-  });
+  this.env = jjv();
+  this.env.defaultOptions.checkRequired = true;
+  this.env.defaultOptions.useDefault = true;
+  this.env.defaultOptions.useCoerce = false;
 
   if (options.setup) this.setup();
 }
 
 Environment.prototype.setup = function() {
-  this.coerceSchema.addTypeCoercion('array', function(v) {
+  this.env.addTypeCoercion('array', function(v) {
     if (!Array.isArray(v)) {
       return typeof v === 'undefined' ? [] : [v];
     }
     return v;
   });
 
-  this.coerceSchema.addTypeCoercion('integer', function(v) {
+  this.env.addTypeCoercion('integer', function(v) {
     if (typeof v === 'string' && v.match(/^\-?\d+$/)) {
       return parseInt(v, 10);
     }
     return v;
   });
 
-  this.coerceSchema.addTypeCoercion('number', function(v) {
+  this.env.addTypeCoercion('number', function(v) {
     if (typeof v === 'string' && v.match(/^(\d+|\d*\.\d+|\d+\.\d*)$/)) {
       return parseFloat(v);
     }
     return v;
   });
 
-  this.coerceSchema.addTypeCoercion('boolean', function(v) {
+  this.env.addTypeCoercion('boolean', function(v) {
     if (typeof v === 'string') {
       return ['', '0', 'false', 'no'].indexOf(v) < 0;
     }
@@ -86,10 +72,13 @@ Environment.prototype.setupValidation = function() {
 
 Environment.prototype.validate = function(schema, data, options) {
   options = options || {};
-  if (options.coerce) {
-    return this.coerceSchema.validate(schema, data, options);
+
+  if (options.hasOwnProperty('coerce')) {
+    options.useCoerce = options.coerce;
+    delete options.coerce;
   }
-  return this.schema.validate(schema, data, options);
+
+  return this.env.validate(schema, data, options);
 };
 
 Environment.prototype.validateThrow = function(schema, data, options) {
@@ -111,9 +100,7 @@ Environment.prototype.validateThrow = function(schema, data, options) {
 };
 
 Environment.prototype.addSchema = function(name, data) {
-  this.schemas.forEach(function(env) {
-    env.addSchema(name, data);
-  });
+  this.env.addSchema(name, data);
 };
 
 /**
