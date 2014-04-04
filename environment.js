@@ -52,7 +52,7 @@ Environment.prototype.setup = function() {
   });
 
   this.env.addTypeCoercion('number', function(v) {
-    if (typeof v === 'string' && v.match(/^(\d+|\d*\.\d+|\d+\.\d*)$/)) {
+    if (typeof v === 'string' && v.match(/^\-?(\d+|\d*\.\d+|\d+\.\d*)$/)) {
       return parseFloat(v);
     }
     return v;
