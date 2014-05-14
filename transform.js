@@ -49,7 +49,10 @@ function transform(value, options) {
 
   return traverse(value, {
     beforeObject: function(v) {
-      if (options.removeFormats && v.format && v.type !== 'string') {
+      if (options.removeFormats &&
+          typeof v.format === 'string' &&
+          typeof v.type === 'string' &&
+          v.type !== 'string') {
         delete v.format;
       }
 
