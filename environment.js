@@ -86,11 +86,7 @@ Environment.prototype.validate = function(schema, data, options) {
 
   if (result) {
     result.errors = function() {
-      try {
-        return self._jjve(schema, data, result);
-      } catch (err) {
-        return [];
-      }
+      return self._jjve(schema, data, result);
     };
   }
 
