@@ -9,6 +9,7 @@
  */
 
 var jjv = require('jjv');
+var jjve = require('jjve');
 var lodash = require('lodash');
 
 /**
@@ -32,6 +33,7 @@ function Environment(options) {
   this.env.defaultOptions.checkRequired = true;
   this.env.defaultOptions.useDefault = true;
   this.env.defaultOptions.useCoerce = false;
+  this._jjve = jjve(this.env);
 
   if (options.setup) this.setup();
 }
@@ -71,6 +73,8 @@ Environment.prototype.setupValidation = function() {
 };
 
 Environment.prototype.validate = function(schema, data, options) {
+  var self = this;
+
   options = options || {};
 
   if (options.hasOwnProperty('coerce')) {
@@ -78,7 +82,19 @@ Environment.prototype.validate = function(schema, data, options) {
     delete options.coerce;
   }
 
-  return this.env.validate(schema, data, options);
+  var result = self.env.validate(schema, data, options);
+
+  if (result) {
+    result.errors = function() {
+      try {
+        return self._jjve(schema, data, result);
+      } catch (err) {
+        return [];
+      }
+    };
+  }
+
+  return result;
 };
 
 Environment.prototype.validateThrow = function(schema, data, options) {
@@ -87,12 +103,12 @@ Environment.prototype.validateThrow = function(schema, data, options) {
   }
   options = options || {};
 
-  var errors = this.validate(schema, data, options);
+  var results = this.validate(schema, data, options);
 
-  if (errors) {
+  if (results) {
     var err = new Error(options.message || 'Validation failed');
-    err.errors = errors;
-    err.message += '\n' + JSON.stringify(errors, null, 4);
+    err.errors = results.errors();
+    err.message += '\n' + JSON.stringify(err.errors, null, 4);
     err.message += '\nFor data:';
     err.message += '\n' + JSON.stringify(data, null, 4);
     throw err;

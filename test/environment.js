@@ -4,6 +4,8 @@
  * Module dependencies.
  */
 
+var should = require('should');
+
 var Environment = require('../environment');
 
 /**
@@ -40,6 +42,30 @@ describe('Environment', function() {
       this.env.validateThrow(schema, data, { coerce: true });
 
       data.one.should.equal(number);
+    });
+  });
+
+  describe('validate', function() {
+    it('should render errors', function() {
+      var schema = {
+        type: 'object',
+        properties: { ok: { type: 'boolean' } },
+      };
+      var data = { ok: 1 };
+
+      var result = this.env.validate(schema, data);
+
+      should(result).be.type('object');
+      result.errors.should.be.type('function');
+
+      result.errors().should.eql([
+        {
+          code: 'INVALID_TYPE',
+          message: 'Invalid type: integer should be boolean',
+          data: 1,
+          path: '$.ok',
+        }
+      ]);
     });
   });
 });
