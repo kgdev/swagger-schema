@@ -1,0 +1,8 @@
+.env
+.jscs.json
+.jshintignore
+.jshintrc
+.rock.yml
+.travis.yml
+test
+tmp
