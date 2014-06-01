@@ -66,6 +66,12 @@ Environment.prototype.setup = function() {
     }
     return v;
   });
+
+  this.env.addFormat('uri', function() {
+    // ignore jjv uri format check because it isn't liberal enough for swagger
+    // valdiation
+    return true;
+  });
 };
 
 Environment.prototype.setupValidation = function() {
@@ -105,8 +111,6 @@ Environment.prototype.validateThrow = function(schema, data, options) {
     var err = new Error(options.message || 'Validation failed');
     err.errors = results.errors();
     err.message += '\n' + JSON.stringify(err.errors, null, 4);
-    err.message += '\nFor data:';
-    err.message += '\n' + JSON.stringify(data, null, 4);
     throw err;
   }
 };

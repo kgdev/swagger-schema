@@ -4,9 +4,14 @@
 
 'use strict';
 
+/* jshint camelcase: false */
+
 /**
  * Module dependencies.
  */
+
+var lodash = require('lodash');
+var spec = require('swagger-spec');
 
 var Environment = require('./environment');
 
@@ -16,40 +21,40 @@ var Environment = require('./environment');
 
 var env = new Environment();
 
-var order = [
-  'ApiVersion',
-  'SwaggerVersion',
-  'Mimes',
+spec.v1_2.forEach(function(s) {
+  var path = 'http://wordnik.github.io/schemas/v1.2/';
 
-  'ScopeObject',
-  'TokenRequestEndpointObject',
-  'TokenEndpointObject',
-  'LoginEndpointObject',
-  'ImplicitObject',
-  'AuthorizationCodeObject',
-  'GrantTypesObject',
+  // remove path prefix
+  if (s.id.slice(0, path.length) === path) {
+    s.id = s.id.slice(path.length);
+  }
 
-  'AuthorizationBasicAuth',
-  'AuthorizationApiKey',
-  'AuthorizationOauth2',
-  'AuthorizationsObject',
+  // strip trailing hash
+  if (s.id[s.id.length - 1] === '#') {
+    s.id = s.id.slice(0, s.id.length - 1);
+  }
 
-  'InfoObject',
-  'ResourceObject',
-  'ResourceListing',
+  switch (s.id) {
+    case 'apiDeclaration.json':
+      var apiObject = lodash.cloneDeep(s.definitions.apiObject);
+      apiObject.required = apiObject.required.filter(function(v) {
+        return v !== 'operations';
+      });
+      env.addSchema('ApiDeclaration', s);
+      env.addSchema('ApiObject', apiObject);
+      break;
+    case 'modelsObject.json':
+      env.addSchema('ModelObject', s);
+      break;
+    case 'operationObject.json':
+      env.addSchema('OperationObject', s);
+      break;
+    case 'resourceListing.json':
+      env.addSchema('ResourceListing', s);
+      break;
+  }
 
-  'AuthorizationList',
-  'ParameterObject',
-  'ResponseMessageObject',
-  'ModelObject',
-  'ModelsObject',
-  'OperationObject',
-  'ApiObject',
-  'ApiDeclaration',
-];
-
-order.forEach(function(name) {
-  env.addSchema(name, require(__dirname + '/spec/' + name + '.json'));
+  env.addSchema(s.id, s);
 });
 
 /**

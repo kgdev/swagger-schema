@@ -361,18 +361,6 @@
             "path": "/pet/findByTags"
         }
     ],
-    "authorizations": {
-        "oauth2": [
-            {
-                "description": "modify pets in your account",
-                "scope": "write:pets"
-            },
-            {
-                "description": "read your pets",
-                "scope": "read:pets"
-            }
-        ]
-    },
     "basePath": "http://petstore.swagger.wordnik.com/api",
     "models": {
         "Category": {
