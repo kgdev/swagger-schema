@@ -110,7 +110,8 @@ Environment.prototype.validateThrow = function(schema, data, options) {
   if (results) {
     var err = new Error(options.message || 'Validation failed');
     err.errors = results.errors();
-    err.message += '\n' + JSON.stringify(err.errors, null, 4);
+    err.message += '\n' + JSON.stringify(data, null, 4);
+    err.message += '\nErrors:\n' + JSON.stringify(err.errors, null, 4);
     throw err;
   }
 };
