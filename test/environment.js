@@ -60,7 +60,7 @@ describe('Environment', function() {
 
       result.errors().should.eql([
         {
-          code: 'INVALID_TYPE',
+          code: 'VALIDATION_INVALID_TYPE',
           message: 'Invalid type: integer should be boolean',
           data: 1,
           path: '$.ok',
