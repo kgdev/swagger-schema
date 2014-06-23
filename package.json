@@ -4,7 +4,7 @@
   "description": "Swagger schema helpers",
   "dependencies": {
     "jjv": "1.0.0",
-    "jjve": "0.2.0",
+    "jjve": "~0.2.1",
     "lodash": "^2.4.1",
     "swagger-spec": "^0.1.0"
   },
